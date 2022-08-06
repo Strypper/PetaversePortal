@@ -1,4 +1,6 @@
-﻿namespace PetaversePortal;
+﻿using PetaversePortal.Pages;
+
+namespace PetaversePortal;
 
 public partial class AppShell : Shell
 {

@@ -1,24 +1,23 @@
-﻿using CommunityToolkit.Maui.Views;
-using PetaversePortal.Models;
+using CommunityToolkit.Maui.Views;
 using PetaversePortal.PopUps;
 using PetaversePortal.ViewModels;
 
-namespace PetaversePortal;
+namespace PetaversePortal.Pages;
 
-public partial class MainPage : ContentPage
+public partial class SpeciesPage : ContentPage
 {
     private SpeciesViewModel _svm;
-    public MainPage(SpeciesViewModel svm)
+    public SpeciesPage(SpeciesViewModel svm)
 	{
 		InitializeComponent();
         _svm = svm;
-		BindingContext = svm;
-		Appearing += async (sender, args) => await svm.GetAllBreed();
-	}
+        BindingContext = svm;
+        Appearing += async (sender, args) => await svm.GetAllBreed();
+    }
 
-	private async void AddBreedBtn_Clicked(object sender, EventArgs e)
-	{
-		var result = await this.ShowPopupAsync(new CreateBreedPopUp());
+    private async void AddBreedBtn_Clicked(object sender, EventArgs e)
+    {
+        var result = await this.ShowPopupAsync(new CreateBreedPopUp());
         if (result is bool boolResult)
         {
             if (boolResult)
@@ -33,4 +32,3 @@ public partial class MainPage : ContentPage
         }
     }
 }
-

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:PetaversePortal.ViewModels"
+             xmlns:model="clr-namespace:PetaversePortal.Models"
+             x:Class="PetaversePortal.Pages.SpeciesPage"
+             Title="SpeciesPage" x:DataType="vm:SpeciesViewModel">
+    <ContentPage.Resources>
+        <DataTemplate x:Key="SpeciesCollectionViewItemTemplate"
+                      x:DataType="model:BreedDTO">
+            <VerticalStackLayout>
+                <Image Source="{x:Binding ImageUrl, Mode=OneWay}"/>
+                <Label Text="{x:Binding BreedName, Mode=OneWay}"/>
+            </VerticalStackLayout>
+        </DataTemplate>
+        <LinearItemsLayout x:Key="HorizontalLayout" Orientation="Horizontal" />
+    </ContentPage.Resources>
+
+    <Grid>
+        <ScrollView>
+            <CollectionView ItemsSource="{x:Binding Species.Breeds, Mode=OneWay}"
+                            ItemTemplate="{StaticResource SpeciesCollectionViewItemTemplate}"
+                            ItemsLayout="{StaticResource HorizontalLayout}">
+                    <CollectionView.Header>
+                        <Grid>
+                            <VerticalStackLayout>
+                                <Label FontSize="Header" Text="{x:Binding Species.Name, Mode=OneWay}"/>
+                                <Label FontSize="Subtitle" Text="{x:Binding Species.Description, Mode=OneWay}"/>
+                            </VerticalStackLayout>
+                            <Picker ItemsSource="{x:Binding SpeciesCollection}"
+                                SelectedItem="{x:Binding Species, Mode=TwoWay}"
+                                ItemDisplayBinding="{x:Binding Name}"
+                                HorizontalOptions="End"/>
+                        </Grid>
+                    </CollectionView.Header>
+                </CollectionView>
+        </ScrollView>
+    </Grid>
+</ContentPage>

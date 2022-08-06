@@ -11,7 +11,7 @@ namespace PetaversePortal.ViewModels
         [ObservableProperty]
         SpeciesDTO species;
 
-        public ObservableCollection<BreedDTO> BreedCollection { get; set; } = new ObservableCollection<BreedDTO>();
+        public ObservableCollection<SpeciesDTO> SpeciesCollection { get; set; } = new ObservableCollection<SpeciesDTO>();
 
         private readonly ISpeciesService _speciesService;
         private readonly IBreedService _breedService;
@@ -28,8 +28,8 @@ namespace PetaversePortal.ViewModels
         {
             IsRunning = true;
             var species = await _speciesService.GetAllAsync();
-            var catSpecies = species.FirstOrDefault();
-            catSpecies.Breeds.ToList().ForEach(cat => BreedCollection.Add(cat));
+            species.ToList().ForEach(sp => SpeciesCollection.Add(sp));
+            //Species = SpeciesCollection.FirstOrDefault();
             IsRunning = false;
             //species.ToList().ForEach(breed => SpeciesCollection.Add(breed));
         }

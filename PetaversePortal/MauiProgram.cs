@@ -2,6 +2,7 @@
 using PetaversePortal.Interfaces;
 using PetaversePortal.Services;
 using PetaversePortal.ViewModels;
+using PetaversePortal.Pages;
 
 namespace PetaversePortal;
 
@@ -29,7 +30,9 @@ public static class MauiProgram
 
         //Page
         builder.Services.AddTransient<MainPage>();
+        builder.Services.AddTransient<BreedPage>();
+        builder.Services.AddTransient<SpeciesPage>();
 
-		return builder.Build();
+        return builder.Build();
 	}
 }
