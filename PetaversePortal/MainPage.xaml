@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:PetaversePortal.Models"
+             xmlns:contentViews="clr-namespace:PetaversePortal.ContentViews"
+             xmlns:vm="clr-namespace:PetaversePortal.ViewModels"
+             x:Class="PetaversePortal.MainPage" 
+             x:DataType="vm:SpeciesViewModel">
+    <ContentPage.Resources>
+        <DataTemplate x:Key="BreedCollectionViewItemTemplate"
+                      x:DataType="model:BreedDTO">
+            <contentViews:BreedCardContentView BindingContext="{x:Binding ., Mode=OneWay}"/>
+        </DataTemplate>
+
+        <GridItemsLayout x:Key="BreedGridItemsLayout"
+                         Orientation="Vertical"
+                         Span="2"/>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <RefreshView Command="{x:Binding GetAllBreedCommand}">
+            <CollectionView ItemTemplate="{StaticResource BreedCollectionViewItemTemplate}"
+                            ItemsLayout="{StaticResource BreedGridItemsLayout}"
+                            ItemsSource="{x:Binding BreedCollection}">
+                <CollectionView.Header>
+                    <Grid>
+                        <Button Text="Add More Breed"
+                                HorizontalOptions="Center"
+                                Clicked="AddBreedBtn_Clicked"/>
+                    </Grid>
+                </CollectionView.Header>
+                <CollectionView.Footer>
+                    <VerticalStackLayout>
+                        <ActivityIndicator IsRunning="{Binding IsRunning}" 
+                                           WidthRequest="30" 
+                                           HeightRequest="30" 
+                                           Color="{StaticResource Primary}"/>
+                    </VerticalStackLayout>
+                </CollectionView.Footer>
+            </CollectionView>
+        </RefreshView>
+    </ScrollView>
+
+</ContentPage>
