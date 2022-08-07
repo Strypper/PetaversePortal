@@ -1,18 +1,31 @@
-﻿namespace PetaversePortal.Models
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+
+namespace PetaversePortal.Models
 {
-    public class BreedDTO : BaseDTO
+    public partial class BreedDTO : BaseDTO
     {
-        public string BreedName { get; set; } = string.Empty;
-        public string BreedDescription { get; set; } = string.Empty;
-        public string ImageUrl { get; set; } = string.Empty;
-        public double MinimunSize { get; set; }
-        public double MaximumSize { get; set; }
-        public double MinimumWeight { get; set; }
-        public double MaximumWeight { get; set; }
-        public int MinimumLifeSpan { get; set; }
-        public int MaximumLifeSpan { get; set; }
+        [ObservableProperty]
+        string breedName;
+        [ObservableProperty]
+        string breedDescription;
+        [ObservableProperty]
+        string imageUrl;
+        [ObservableProperty]
+        double minimunSize;
+        [ObservableProperty]
+        double maximumSize;
+        [ObservableProperty]
+        double minimumWeight;
+        [ObservableProperty]
+        double maximumWeight;
+        [ObservableProperty]
+        int minimumLifeSpan;
+        [ObservableProperty]
+        int maximumLifeSpan;
+        [ObservableProperty]
+        string color;
+
         public CoatType Coat { get; set; }
-        public string Color { get; set; } = string.Empty;
     }
     public enum CoatType
     {

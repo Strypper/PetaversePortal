@@ -40,9 +40,17 @@ namespace PetaversePortal.Services
             }
         }
 
-        public Task<SpeciesDTO> CreateAsync(SpeciesDTO dto)
+        public async Task<SpeciesDTO> CreateAsync(SpeciesDTO dto)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return await _speciesData.CreateAsync(dto);
+            }
+            catch (ApiException ex)
+            {
+                //await new HttpRequestErrorContentDialog() { Exception = ex }.ShowAsync();
+                return null;
+            }
         }
 
         public Task<SpeciesDTO> DeleteAsync(SpeciesDTO dto)

@@ -1,4 +1,5 @@
 using CommunityToolkit.Maui.Views;
+using PetaversePortal.Models;
 using PetaversePortal.PopUps;
 using PetaversePortal.ViewModels;
 
@@ -18,17 +19,11 @@ public partial class SpeciesPage : ContentPage
     private async void AddBreedBtn_Clicked(object sender, EventArgs e)
     {
         var result = await this.ShowPopupAsync(new CreateBreedPopUp());
-        if (result is bool boolResult)
+        if (result != null)
         {
-            if (boolResult)
-            {
-                // Yes was tapped
-                await _svm.AddBreed();
-            }
-            else
-            {
-                // No was tapped
-            }
+        }
+        else
+        {
         }
     }
 }

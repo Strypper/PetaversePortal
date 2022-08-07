@@ -1,13 +1,22 @@
-﻿namespace PetaversePortal.Models
-{
-    public class SpeciesDTO : BaseDTO
-    {
-        public string Name { get; set; } = string.Empty;
-        public string Color { get; set; } = string.Empty;
-        public string Icon { get; set; } = string.Empty;
-        public string Description { get; set; } = string.Empty;
-        public string TopLovedPetOfTheWeek { get; set; } = string.Empty;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using System.Collections.ObjectModel;
 
-        public virtual ICollection<BreedDTO> Breeds { get; set; } = Array.Empty<BreedDTO>();
+namespace PetaversePortal.Models
+{
+    public partial class SpeciesDTO : BaseDTO
+    {
+        [ObservableProperty]
+        string name;
+        [ObservableProperty]
+        string color;
+        [ObservableProperty]
+        string icon;
+        [ObservableProperty]
+        string description;
+        [ObservableProperty]
+        string topLovedPetOfTheWeek;
+
+        [ObservableProperty]
+        ObservableCollection<BreedDTO> breeds;
     }
 }

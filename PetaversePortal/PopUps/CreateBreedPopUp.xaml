@@ -1,13 +1,52 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PetaversePortal.PopUps.CreateBreedPopUp"
-             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
-    <VerticalStackLayout>
-        <Label Text="This is a very important message! Do you agree?" />
-        <Button Text="Yes" 
+<toolkit:Popup x:Name="CreateBreed"
+               x:Class="PetaversePortal.PopUps.CreateBreedPopUp"
+               xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+               xmlns:local="clr-namespace:PetaversePortal.PopUps"
+               Color="{StaticResource Primary}"
+               BindingContext="{x:Reference CreateBreed}">
+
+    <ScrollView Padding="30">
+        <Grid RowDefinitions="*, auto"
+          ColumnDefinitions="*, *">
+            <VerticalStackLayout Grid.ColumnSpan="2">
+                <Label Text="Create a new Breed" />
+                <Entry Placeholder="Breed Name"
+                   Text="{Binding BreedDTO.BreedName, Mode=TwoWay}"/>
+                <Entry Placeholder="Breed Image Url"
+                   Text="{Binding BreedDTO.ImageUrl, Mode=TwoWay}"/>
+                <Entry Placeholder="Breed Colors"
+                   Text="{Binding BreedDTO.Color, Mode=TwoWay}"/>
+                <Editor Placeholder="Breed Description"
+                    MinimumHeightRequest="250"
+                    Text="{Binding BreedDTO.BreedDescription, Mode=TwoWay}"/>
+                <HorizontalStackLayout>
+                    <Entry Placeholder="Breed Minimum Size"
+                       Text="{Binding BreedDTO.MinimunSize, Mode=TwoWay}"/>
+                    <Entry Placeholder="Breed Maximum Size"
+                       Text="{Binding BreedDTO.MaximumSize, Mode=TwoWay}"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <Entry Placeholder="Breed Minimum Size"
+                       Text="{Binding BreedDTO.MinimumWeight, Mode=TwoWay}"/>
+                    <Entry Placeholder="Breed Maximum Size"
+                       Text="{Binding BreedDTO.MaximumWeight, Mode=TwoWay}"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <Entry Placeholder="Breed Minimum Size"
+                       Text="{Binding BreedDTO.MinimumLifeSpan, Mode=TwoWay}"/>
+                    <Entry Placeholder="Breed Maximum Size"
+                       Text="{Binding BreedDTO.MaximumLifeSpan, Mode=TwoWay}"/>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+            <Button Text="Add Breed" 
+                Grid.Row="1"
                 Clicked="OnYesButtonClicked" />
-        <Button Text="No"
+            <Button Text="Cancel"
+                Grid.Row="1" Grid.Column="1"
                 Clicked="OnNoButtonClicked" />
-    </VerticalStackLayout>
+        </Grid>
+    </ScrollView>
 </toolkit:Popup>
