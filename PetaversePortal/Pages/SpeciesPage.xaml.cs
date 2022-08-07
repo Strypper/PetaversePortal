@@ -18,7 +18,7 @@ public partial class SpeciesPage : ContentPage
 
     private async void AddBreedBtn_Clicked(object sender, EventArgs e)
     {
-        var result = await this.ShowPopupAsync(new CreateBreedPopUp());
+        var result = await this.ShowPopupAsync(new CreateBreedPopUp(_svm.Species.Id));
         if (result != null)
         {
         }

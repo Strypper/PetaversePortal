@@ -23,6 +23,8 @@ namespace PetaversePortal.Models
         [ObservableProperty]
         int maximumLifeSpan;
         [ObservableProperty]
+        int speciesId;
+        [ObservableProperty]
         string color;
 
         public CoatType Coat { get; set; }
