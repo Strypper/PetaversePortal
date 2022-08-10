@@ -1,54 +1,173 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:vm="clr-namespace:PetaversePortal.ViewModels"
+<ContentPage 
              xmlns:model="clr-namespace:PetaversePortal.Models"
-             x:Class="PetaversePortal.Pages.SpeciesPage"
-             Title="SpeciesPage" x:DataType="vm:SpeciesViewModel">
+             xmlns:vm="clr-namespace:PetaversePortal.ViewModels"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:icons="clr-namespace:PetaversePortal.Models.Icons"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:customLayout="clr-namespace:PetaversePortal.Layouts"
+             xmlns:converters="clr-namespace:PetaversePortal.Converters"
+             x:Class="PetaversePortal.Pages.SpeciesPage" 
+             x:DataType="vm:SpeciesViewModel"
+             Background="#252836">
     <ContentPage.Resources>
-        <DataTemplate x:Key="SpeciesCollectionViewItemTemplate"
+        <converters:HexToSolidColorBrushConverter x:Key="HexToSolidColorBrushConverter"/>
+        <DataTemplate x:Key="HorizontalWrapLayoutItemTemplate"
                       x:DataType="model:BreedDTO">
-            <VerticalStackLayout>
-                <Image Source="{x:Binding ImageUrl, Mode=OneWay}"/>
-                <Label Text="{x:Binding BreedName, Mode=OneWay}"/>
-            </VerticalStackLayout>
+            <Grid HeightRequest="550">
+                <Border WidthRequest="310"
+                        HeightRequest="425"
+                        Margin="50,0,0,0"
+                        StrokeThickness="0"
+                        BackgroundColor="Transparent">
+                    <Frame BackgroundColor="#1f1d2b"
+                           CornerRadius="10">
+                        <Frame.Clip>
+                            <PathGeometry Figures="M144 0.384293C63.5292 6.02646 0 73.0942 0 155V425H310V67H157C149.82 67 144 61.1797 144 54V0.384293Z"/>
+                        </Frame.Clip>
+                        <Grid VerticalOptions="Center"
+                              HorizontalOptions="Center"
+                              RowDefinitions="300, auto">
+                            <VerticalStackLayout Grid.Row="1"
+                                             HorizontalOptions="Center">
+                                <Label Text="{x:Binding BreedName, Mode=OneWay}"
+                                       HorizontalOptions="Center"
+                                       FontSize="Medium"/>
+                                <Button Margin="0,10,0,0"
+                                        CornerRadius="3"
+                                        HorizontalOptions="Center"
+                                        ImageSource="{StaticResource DeleteIcon}"/>
+                            </VerticalStackLayout>
+                        </Grid>
+                    </Frame>
+                </Border>
+                <Button ImageSource="{StaticResource InfoIcon}"
+                        Text="Breed Detail"
+                        TextColor="#15161e"
+                        VerticalOptions="Start"
+                        HorizontalOptions="End"
+                        Margin="0,65,0,0"
+                        CornerRadius="0"
+                        WidthRequest="160"
+                        HeightRequest="65"
+                        BackgroundColor="#d9ddff">
+                    <Button.Clip>
+                        <PathGeometry Figures="M0 0H155V58H10C4.47715 58 0 53.5228 0 48V0Z"/>
+                    </Button.Clip>
+                </Button>
+                <Image Source="{x:Binding ImageUrl, Mode=OneWay}"
+                       HeightRequest="400"
+                       Margin="0,-10,0,0"
+                       VerticalOptions="Start"
+                       HorizontalOptions="Start"/>
+            </Grid>
         </DataTemplate>
-        <GridItemsLayout x:Key="HorizontalLayout"
-                         Orientation="Vertical"
-                         Span="2" />
+        <DataTemplate x:Key="SpeciesPivotItemTemplate"
+                      x:DataType="model:SpeciesDTO">
+            <RadioButton Content="{Binding .}" Value="{Binding .}">
+                <RadioButton.ControlTemplate>
+                    <ControlTemplate>
+                        <Grid RowDefinitions="45,4">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroupList>
+                                    <VisualStateGroup x:Name="CheckedStates">
+                                        <VisualState x:Name="Checked">
+                                            <VisualState.Setters>
+                                                <Setter
+                                                        TargetName="TextLabel"
+                                                        Property="Label.TextColor"
+                                                        Value="{StaticResource Primary}"/>
+                                                <Setter
+                                                        TargetName="Indicator"
+                                                        Property="BoxView.Color"
+                                                        Value="{StaticResource Primary}"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+
+                                        <VisualState x:Name="Unchecked">
+                                            <VisualState.Setters>
+                                                <Setter TargetName="TextLabel"
+                                                        Property="Label.TextColor"
+                                                        Value="White"/>
+                                                <Setter
+                                                        TargetName="Indicator"
+                                                        Property="BoxView.Color"
+                                                        Value="Transparent"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateGroupList>
+                            </VisualStateManager.VisualStateGroups>
+                            <HorizontalStackLayout>
+                                <Label x:Name="TextLabel"
+                                       FontSize="Large"
+                                       VerticalOptions="Center"
+                                       Text="{TemplateBinding Content.Name}" />
+                                <toolkit:AvatarView Margin="5,0,0,0"
+                                                    WidthRequest="30" 
+                                                    HeightRequest="30"
+                                                    VerticalOptions="Center"
+                                                    ImageSource="{TemplateBinding Content.TopLovedPetOfTheWeek}"/>
+                            </HorizontalStackLayout>
+                            <BoxView x:Name="Indicator" 
+                                     Grid.Row="1"
+                                     CornerRadius="2"
+                                     Color="Transparent"/>
+                        </Grid>
+                    </ControlTemplate>
+                </RadioButton.ControlTemplate>
+            </RadioButton>
+        </DataTemplate>
+        <FontImageSource x:Key="RefreshIcon"
+                         Color="Black"
+                         FontFamily="FluentUIFont"
+                         Glyph="{Static icons:FluentIcon.Ic_fluent_accessibility_16_regular}"/>
+        <FontImageSource x:Key="InfoIcon"
+                         Color="#15161e"
+                         FontFamily="FluentUIFont"
+                         Glyph="{Static icons:FluentIcon.Ic_fluent_info_16_regular}"/>
+        <FontImageSource x:Key="DeleteIcon"
+                         Color="Red"
+                         FontFamily="FluentUIFont"
+                         Glyph="{Static icons:FluentIcon.Ic_fluent_delete_16_regular}"/>
+        <FontImageSource x:Key="AddIcon"
+                         Glyph="{Static icons:FluentIcon.Ic_fluent_add_circle_16_regular}"
+                         FontFamily="FluentUIFont"
+                         Color="Black"/>
     </ContentPage.Resources>
 
-    <Grid>
-        <ScrollView>
-            <CollectionView ItemsSource="{x:Binding Species.Breeds, Mode=OneWay}"
-                            ItemTemplate="{StaticResource SpeciesCollectionViewItemTemplate}"
-                            ItemsLayout="{StaticResource HorizontalLayout}">
-                    <CollectionView.Header>
-                        <Grid>
-                            <HorizontalStackLayout>
-                                <VerticalStackLayout MaximumWidthRequest="250"
-                                                     MaximumHeightRequest="100">
-                                    <Label FontSize="Header" 
-                                           MaxLines="1"
-                                           LineBreakMode="TailTruncation"
-                                           Text="{x:Binding Species.Name, Mode=OneWay}"/>
-                                    <Label FontSize="Subtitle"
-                                           MaxLines="1"
-                                           LineBreakMode="TailTruncation"
-                                           Text="{x:Binding Species.Description, Mode=OneWay}"/>
-                                </VerticalStackLayout>
-                            <Button Text="Add Breed"
-                                    HorizontalOptions="Center"
-                                    VerticalOptions="Center"
-                                    Clicked="AddBreedBtn_Clicked"/>
-                        </HorizontalStackLayout>
-                            <Picker ItemsSource="{x:Binding SpeciesCollection}"
-                                SelectedItem="{x:Binding Species, Mode=TwoWay}"
-                                ItemDisplayBinding="{x:Binding Name}"
-                                HorizontalOptions="End"/>
-                        </Grid>
-                    </CollectionView.Header>
-                </CollectionView>
-        </ScrollView>
-    </Grid>
+    <ScrollView>
+        <Grid RowDefinitions="Auto, Auto, *">
+            <Grid>
+                <HorizontalStackLayout Spacing="20"
+                                       RadioButtonGroup.GroupName="Species"
+                                       BindableLayout.ItemsSource="{x:Binding SpeciesCollection}"
+                                       RadioButtonGroup.SelectedValue="{Binding Species, Mode=TwoWay}"
+                                       BindableLayout.ItemTemplate="{StaticResource SpeciesPivotItemTemplate}"/>
+            </Grid>
+            <Grid Grid.Row="1"
+                  Margin="20,20,20,0">
+                <Frame Padding="10"
+                       CornerRadius="5"
+                       BackgroundColor="#1f1d2b">
+                    <VerticalStackLayout>
+                        <Label Text="{x:Binding Species.Name}"
+                               FontSize="40"
+                               FontAttributes="Bold"/>
+                        <Label Text="{x:Binding Species.Description}"
+                           FontSize="Subtitle"/>
+                    </VerticalStackLayout>
+                </Frame>
+                <Button VerticalOptions="Start"
+                        HorizontalOptions="End"
+                        HeightRequest="47" Margin="0,10,15,0"
+                        Text="Add Breed" TextColor="Black"
+                        ImageSource="{StaticResource AddIcon}"/>
+            </Grid>
+            <customLayout:HorizontalWrapLayout Grid.Row="2" Spacing="20" Margin="10,20,0,0"
+                                               BindableLayout.ItemsSource="{x:Binding Species.Breeds, Mode=OneWay}"
+                                               BindableLayout.ItemTemplate="{StaticResource HorizontalWrapLayoutItemTemplate}"/>
+        </Grid>
+    </ScrollView>
 </ContentPage>

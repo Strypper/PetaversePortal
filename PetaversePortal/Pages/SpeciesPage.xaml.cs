@@ -13,7 +13,6 @@ public partial class SpeciesPage : ContentPage
 		InitializeComponent();
         _svm = svm;
         BindingContext = svm;
-        Appearing += async (sender, args) => await svm.GetAllBreed();
     }
 
     private async void AddBreedBtn_Clicked(object sender, EventArgs e)

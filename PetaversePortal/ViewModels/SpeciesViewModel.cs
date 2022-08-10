@@ -3,6 +3,8 @@ using CommunityToolkit.Mvvm.Input;
 using PetaversePortal.Interfaces;
 using PetaversePortal.Models;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace PetaversePortal.ViewModels
 {
@@ -20,7 +22,9 @@ namespace PetaversePortal.ViewModels
                                ,IBreedService breedService)
         {
             _speciesService = speciesService;
-            _breedService   = breedService;
+            _breedService = breedService;
+
+            GetAllBreed();
         }
 
         [RelayCommand]
@@ -33,7 +37,7 @@ namespace PetaversePortal.ViewModels
             IsRunning = false;
             //species.ToList().ForEach(breed => SpeciesCollection.Add(breed));
         }
-        
+
         public async Task AddBreed()
         {
         }

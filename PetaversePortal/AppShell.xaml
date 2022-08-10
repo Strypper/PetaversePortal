@@ -1,12 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<Shell
-    x:Class="PetaversePortal.AppShell"
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:PetaversePortal.Pages"
-    Shell.FlyoutBehavior="Disabled">
-    <ShellContent
-        Title="Species"
-        ContentTemplate="{DataTemplate local:SpeciesPage}"
-        Route="SpeciesPage" />
+<Shell Shell.FlyoutBehavior="Flyout"
+        x:Class="PetaversePortal.AppShell"
+        xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        xmlns:local="clr-namespace:PetaversePortal.Pages"
+        xmlns:icons="clr-namespace:PetaversePortal.Models.Icons">
+    <Shell.Resources>
+        <FontImageSource x:Key="BreedIcon"
+                         Color="{AppThemeBinding Light='#15161e', Dark='#eaeaea' }"
+                         FontFamily="FluentUIFont"
+                         Glyph="{Static icons:FluentIcon.Ic_fluent_animal_dog_16_regular}"/>
+    </Shell.Resources>
+
+    <Shell.FlyoutHeader>
+        <Grid>
+            <Image Source="https://intranetblobstorages.blob.core.windows.net/avatarstorage/Petaverse.png"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"
+                   Margin="50"
+                   WidthRequest="100" HeightRequest="100"/>
+        </Grid>
+    </Shell.FlyoutHeader>
+    
+    <ShellContent Title="Species"
+                  Route="SpeciesPage"
+                  Icon="{StaticResource BreedIcon}"
+                  ContentTemplate="{DataTemplate local:SpeciesPage}" />
 </Shell>
