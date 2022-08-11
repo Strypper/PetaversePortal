@@ -4,7 +4,8 @@ using PetaversePortal.Interfaces;
 using PetaversePortal.Models;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
-using static AndroidX.Activity.Result.Contract.ActivityResultContracts;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace PetaversePortal.ViewModels
 {
@@ -28,6 +29,9 @@ namespace PetaversePortal.ViewModels
             _breedService   = breedService;
             TakePictureCommand = new Command(() => TakePicture());
             PickPictureCommand = new Command(() => PickPicture());
+            _breedService = breedService;
+
+            GetAllBreed();
         }
 
         [RelayCommand]
@@ -40,7 +44,7 @@ namespace PetaversePortal.ViewModels
             IsRunning = false;
             //species.ToList().ForEach(breed => SpeciesCollection.Add(breed));
         }
-        
+
         public async Task AddBreed()
         {
         }
