@@ -23,32 +23,36 @@
             <CollectionView ItemsSource="{x:Binding Species.Breeds, Mode=OneWay}"
                             ItemTemplate="{StaticResource SpeciesCollectionViewItemTemplate}"
                             ItemsLayout="{StaticResource HorizontalLayout}">
-                    <CollectionView.Header>
-                        <Grid>
-                            <HorizontalStackLayout>
-                                <VerticalStackLayout MaximumWidthRequest="250"
-                                                     MaximumHeightRequest="100">
-                                    <Label FontSize="Header" 
-                                           MaxLines="1"
-                                           LineBreakMode="TailTruncation"
-                                           Text="{x:Binding Species.Name, Mode=OneWay}"/>
-                                    <Label FontSize="Subtitle"
-                                           MaxLines="1"
-                                           LineBreakMode="TailTruncation"
-                                           Text="{x:Binding Species.Description, Mode=OneWay}"/>
-                                </VerticalStackLayout>
+                <CollectionView.Header>
+                    <Grid>
+                        <HorizontalStackLayout Grid.Row="0" Grid.Column="0">
+                            <VerticalStackLayout MaximumWidthRequest="250"
+                                                 MaximumHeightRequest="100">
+                                <Label FontSize="Header" 
+                                       MaxLines="1"
+                                       LineBreakMode="TailTruncation"
+                                       Text="{x:Binding Species.Name, Mode=OneWay}"/>
+                                <Label FontSize="Subtitle"
+                                       MaxLines="1"
+                                       LineBreakMode="TailTruncation"
+                                       Text="{x:Binding Species.Description, Mode=OneWay}"/>
+                            </VerticalStackLayout>
                             <Button Text="Add Breed"
                                     HorizontalOptions="Center"
                                     VerticalOptions="Center"
                                     Clicked="AddBreedBtn_Clicked"/>
                         </HorizontalStackLayout>
+                        <VerticalStackLayout>
+                            <Button Text="Take Image" Command="{x:Binding TakePictureCommand}"/>
+                            <Button Text="Pick Image" Command="{x:Binding PickPictureCommand}"/>
                             <Picker ItemsSource="{x:Binding SpeciesCollection}"
                                 SelectedItem="{x:Binding Species, Mode=TwoWay}"
                                 ItemDisplayBinding="{x:Binding Name}"
                                 HorizontalOptions="End"/>
-                        </Grid>
-                    </CollectionView.Header>
-                </CollectionView>
+                        </VerticalStackLayout>
+                    </Grid>
+                </CollectionView.Header>
+            </CollectionView>
         </ScrollView>
     </Grid>
 </ContentPage>
