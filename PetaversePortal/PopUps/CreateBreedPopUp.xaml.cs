@@ -8,10 +8,10 @@ public partial class CreateBreedPopUp : Popup
     public BreedDTO BreedDTO { get; set; } = new BreedDTO();
 
     public CreateBreedPopUp(int speciesId)
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
         BreedDTO.SpeciesId = speciesId;
-	}
+    }
 
     void OnYesButtonClicked(object? sender, EventArgs e) => Close(BreedDTO);
 

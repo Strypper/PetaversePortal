@@ -136,7 +136,6 @@
                          FontFamily="FluentUIFont"
                          Color="Black"/>
     </ContentPage.Resources>
-
     <ScrollView>
         <Grid RowDefinitions="Auto, Auto, *">
             <Grid>

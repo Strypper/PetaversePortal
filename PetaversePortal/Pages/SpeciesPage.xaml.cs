@@ -8,9 +8,11 @@ namespace PetaversePortal.Pages;
 public partial class SpeciesPage : ContentPage
 {
     private SpeciesViewModel _svm;
+
     public SpeciesPage(SpeciesViewModel svm)
-	{
-		InitializeComponent();
+    {
+
+        InitializeComponent();
         _svm = svm;
         BindingContext = svm;
     }
