@@ -5,17 +5,16 @@
                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
                xmlns:local="clr-namespace:PetaversePortal.PopUps"
-               Color="{StaticResource Primary}"
                BindingContext="{x:Reference CreateBreed}"
-               Size="600">
-    <Frame BackgroundColor="{StaticResource White}">
+               Color="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray100}}">
+    <Frame>
         <ScrollView Padding="10,0,10,0" 
                     VerticalScrollBarVisibility="Never">
-            <Grid RowDefinitions="*, auto"
+            <Grid Margin="0"
                   RowSpacing="30"
-                  ColumnDefinitions="*, *" 
                   ColumnSpacing="40"
-                  Margin="0">
+                  RowDefinitions="*, auto"
+                  ColumnDefinitions="*, *" >
                 <VerticalStackLayout Grid.Column="0" Grid.ColumnSpan="2" Margin="0">
                     <Label Text="Create a new Breed" 
                            TextColor="{StaticResource Primary}"
@@ -44,11 +43,11 @@
                             <RoundRectangle CornerRadius="10"/>
                         </Border.StrokeShape>
                         <Entry Placeholder="Breed Image Url"
-                                   BackgroundColor="{StaticResource Gray100}"
-                                   PlaceholderColor="{StaticResource Gray300}"
-                                   Text="{Binding BreedDTO.ImageUrl, Mode=TwoWay}"
-                                   TextColor="{StaticResource Gray500}"
-                                   Keyboard="Url"/>
+                               BackgroundColor="{StaticResource Gray100}"
+                               PlaceholderColor="{StaticResource Gray300}"
+                               Text="{Binding BreedDTO.ImageUrl, Mode=TwoWay}"
+                               TextColor="{StaticResource Gray500}"
+                               Keyboard="Url"/>
                     </Border>
 
                     <Label Text="Breed Colors:" 

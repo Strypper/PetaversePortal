@@ -3,6 +3,7 @@ using PetaversePortal.Interfaces;
 using PetaversePortal.Services;
 using PetaversePortal.ViewModels;
 using PetaversePortal.Pages;
+using PetaversePortal.PopUps;
 
 namespace PetaversePortal;
 
@@ -22,6 +23,7 @@ public static class MauiProgram
 
         builder.UseMauiApp<App>().UseMauiCommunityToolkit();
 
+        builder.Services.AddSingleton<IFileService, FileService>();
         builder.Services.AddSingleton<ISpeciesService, SpeciesService>();
         builder.Services.AddSingleton<IBreedService, BreedService>();
 

@@ -3,9 +3,6 @@ using CommunityToolkit.Mvvm.Input;
 using PetaversePortal.Interfaces;
 using PetaversePortal.Models;
 using System.Collections.ObjectModel;
-using System.Windows.Input;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 
 namespace PetaversePortal.ViewModels
 {
@@ -16,20 +13,17 @@ namespace PetaversePortal.ViewModels
 
         public ObservableCollection<SpeciesDTO> SpeciesCollection { get; set; } = new ObservableCollection<SpeciesDTO>();
 
-        public ICommand TakePictureCommand { get; set; }
-        public ICommand PickPictureCommand { get; set; }
-
         private readonly ISpeciesService _speciesService;
+        private readonly IFileService    _fileService;
         private readonly IBreedService   _breedService;
 
         public SpeciesViewModel(ISpeciesService speciesService
+                               ,IFileService fileService
                                ,IBreedService breedService)
         {
             _speciesService = speciesService;
+            _fileService    = fileService;
             _breedService   = breedService;
-            TakePictureCommand = new Command(() => TakePicture());
-            PickPictureCommand = new Command(() => PickPicture());
-            _breedService = breedService;
 
             GetAllBreed();
         }
@@ -45,46 +39,9 @@ namespace PetaversePortal.ViewModels
             //species.ToList().ForEach(breed => SpeciesCollection.Add(breed));
         }
 
+        [RelayCommand]
         public async Task AddBreed()
         {
         }
-
-        public async Task TakePicture()
-        {
-            if (MediaPicker.Default.IsCaptureSupported)
-            {
-                FileResult photo = await MediaPicker.Default.CapturePhotoAsync();
-
-                if (photo != null)
-                {
-                    // save the file into local storage
-                    string localFilePath = Path.Combine(FileSystem.CacheDirectory, photo.FileName);
-
-                    using Stream sourceStream = await photo.OpenReadAsync();
-                    using FileStream localFileStream = File.OpenWrite(localFilePath);
-
-                    await sourceStream.CopyToAsync(localFileStream);
-                }
-            }
-        }
-
-        public async Task PickPicture()
-        {
-            if (MediaPicker.Default.IsCaptureSupported)
-            {
-                FileResult photo = await MediaPicker.Default.PickPhotoAsync(new MediaPickerOptions());
-                if (photo != null)
-                {
-                    // save the file into local storage
-                    string localFilePath = Path.Combine(FileSystem.CacheDirectory, photo.FileName);
-
-                    using Stream sourceStream = await photo.OpenReadAsync();
-                    using FileStream localFileStream = File.OpenWrite(localFilePath);
-
-                    await sourceStream.CopyToAsync(localFileStream);
-                }
-            }
-        }
-
     }
 }

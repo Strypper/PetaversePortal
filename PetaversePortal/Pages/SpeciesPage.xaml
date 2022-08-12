@@ -22,6 +22,8 @@
                         StrokeThickness="0"
                         BackgroundColor="Transparent">
                     <Frame BackgroundColor="#1f1d2b"
+                           BorderColor="Transparent"
+                           HasShadow="True"
                            CornerRadius="10">
                         <Frame.Clip>
                             <PathGeometry Figures="M144 0.384293C63.5292 6.02646 0 73.0942 0 155V425H310V67H157C149.82 67 144 61.1797 144 54V0.384293Z"/>
@@ -33,7 +35,8 @@
                                              HorizontalOptions="Center">
                                 <Label Text="{x:Binding BreedName, Mode=OneWay}"
                                        HorizontalOptions="Center"
-                                       FontSize="Medium"/>
+                                       FontSize="Medium"
+                                       TextColor="{StaticResource White}"/>
                                 <Button Margin="0,10,0,0"
                                         CornerRadius="3"
                                         HorizontalOptions="Center"
@@ -42,16 +45,16 @@
                         </Grid>
                     </Frame>
                 </Border>
-                <Button ImageSource="{StaticResource InfoIcon}"
-                        Text="Breed Detail"
-                        TextColor="#15161e"
-                        VerticalOptions="Start"
-                        HorizontalOptions="End"
+                <Button CornerRadius="0"
                         Margin="0,65,0,0"
-                        CornerRadius="0"
                         WidthRequest="160"
                         HeightRequest="65"
-                        BackgroundColor="#d9ddff">
+                        Text="Breed Detail"
+                        TextColor="{StaticResource Black}"
+                        VerticalOptions="Start"
+                        HorizontalOptions="End"
+                        BackgroundColor="{StaticResource Primary}"
+                        ImageSource="{StaticResource InfoIcon}">
                     <Button.Clip>
                         <PathGeometry Figures="M0 0H155V58H10C4.47715 58 0 53.5228 0 48V0Z"/>
                     </Button.Clip>
@@ -77,11 +80,11 @@
                                                 <Setter
                                                         TargetName="TextLabel"
                                                         Property="Label.TextColor"
-                                                        Value="{StaticResource Primary}"/>
+                                                        Value="{TemplateBinding Content.Color, Converter={StaticResource HexToSolidColorBrushConverter}}"/>
                                                 <Setter
                                                         TargetName="Indicator"
                                                         Property="BoxView.Color"
-                                                        Value="{StaticResource Primary}"/>
+                                                        Value="{TemplateBinding Content.Color, Converter={StaticResource HexToSolidColorBrushConverter}}"/>
                                             </VisualState.Setters>
                                         </VisualState>
 
@@ -151,17 +154,22 @@
                        CornerRadius="5"
                        BackgroundColor="#1f1d2b">
                     <VerticalStackLayout>
-                        <Label Text="{x:Binding Species.Name}"
-                               FontSize="40"
-                               FontAttributes="Bold"/>
-                        <Label Text="{x:Binding Species.Description}"
-                           FontSize="Subtitle"/>
+                        <Label FontSize="40"
+                               FontAttributes="Bold"
+                               Text="{x:Binding Species.Name}"
+                               TextColor="{StaticResource White}"/>
+                        <Label FontSize="Subtitle"
+                               Text="{x:Binding Species.Description}"
+                               TextColor="{StaticResource White}"/>
                     </VerticalStackLayout>
                 </Frame>
-                <Button VerticalOptions="Start"
+                <Button Text="Add Breed" 
+                        HeightRequest="47"
+                        Margin="0,10,15,0"
+                        TextColor="Black"
+                        VerticalOptions="Start"
                         HorizontalOptions="End"
-                        HeightRequest="47" Margin="0,10,15,0"
-                        Text="Add Breed" TextColor="Black"
+                        Clicked="AddBreedBtn_Clicked"
                         ImageSource="{StaticResource AddIcon}"/>
             </Grid>
             <customLayout:HorizontalWrapLayout Grid.Row="2" Spacing="20" Margin="10,20,0,0"

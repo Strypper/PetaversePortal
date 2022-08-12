@@ -15,10 +15,8 @@ namespace PetaversePortal.Converters
                 var r = (byte)System.Convert.ToUInt32(hex.Substring(0, 2), 16);
                 var g = (byte)System.Convert.ToUInt32(hex.Substring(2, 2), 16);
                 var b = (byte)System.Convert.ToUInt32(hex.Substring(4, 2), 16);
-                //get the color
-                Color color = Color.FromRgb(r, g, b);
 
-                return new SolidColorBrush(color);
+                return Color.FromRgb(r, g, b);
             }
             return null;
         }

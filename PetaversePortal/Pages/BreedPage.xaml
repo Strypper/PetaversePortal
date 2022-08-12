@@ -20,12 +20,12 @@
         <ScrollView>
             <StackLayout>
                 <ActivityIndicator IsRunning="{Binding IsRunning}" 
-                                           WidthRequest="30" 
-                                           HeightRequest="30" 
-                                           Color="{StaticResource Primary}"/>
+                                   WidthRequest="30" 
+                                   HeightRequest="30" 
+                                   Color="{StaticResource Primary}"/>
                 <RefreshView Command="{x:Binding GetAllBreedCommand}">
                     <CollectionView ItemTemplate="{StaticResource BreedCollectionViewItemTemplate}"
-                                ItemsLayout="{StaticResource BreedGridItemsLayout}">
+                                    ItemsLayout="{StaticResource BreedGridItemsLayout}">
                     </CollectionView>
                 </RefreshView>
             </StackLayout>
