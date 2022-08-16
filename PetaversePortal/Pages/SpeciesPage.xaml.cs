@@ -11,10 +11,10 @@ public partial class SpeciesPage : ContentPage
 
     public SpeciesPage(SpeciesViewModel svm)
     {
-
         InitializeComponent();
         _svm = svm;
         BindingContext = svm;
+
     }
 
     private async void AddBreedBtn_Clicked(object sender, EventArgs e)

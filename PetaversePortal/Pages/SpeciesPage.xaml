@@ -140,15 +140,13 @@
                          Color="Black"/>
     </ContentPage.Resources>
     <ScrollView>
-        <Grid RowDefinitions="Auto, Auto, *">
-            <Grid>
-                <HorizontalStackLayout Spacing="20"
+        <VerticalStackLayout>
+            <HorizontalStackLayout Spacing="20"
                                        RadioButtonGroup.GroupName="Species"
                                        BindableLayout.ItemsSource="{x:Binding SpeciesCollection}"
                                        RadioButtonGroup.SelectedValue="{Binding Species, Mode=TwoWay}"
                                        BindableLayout.ItemTemplate="{StaticResource SpeciesPivotItemTemplate}"/>
-            </Grid>
-            <Grid Grid.Row="1"
+            <Grid
                   Margin="20,20,20,0">
                 <Frame Padding="10"
                        CornerRadius="5"
@@ -175,6 +173,6 @@
             <customLayout:HorizontalWrapLayout Grid.Row="2" Spacing="20" Margin="10,20,0,0"
                                                BindableLayout.ItemsSource="{x:Binding Species.Breeds, Mode=OneWay}"
                                                BindableLayout.ItemTemplate="{StaticResource HorizontalWrapLayoutItemTemplate}"/>
-        </Grid>
+        </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

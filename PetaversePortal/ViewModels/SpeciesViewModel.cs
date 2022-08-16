@@ -39,9 +39,5 @@ namespace PetaversePortal.ViewModels
             //species.ToList().ForEach(breed => SpeciesCollection.Add(breed));
         }
 
-        [RelayCommand]
-        public async Task AddBreed()
-        {
-        }
     }
 }

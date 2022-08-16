@@ -30,6 +30,7 @@ public static class MauiProgram
         //ViewModels
         builder.Services.AddTransient<ViewModelBase>();
         builder.Services.AddTransient<SpeciesViewModel>();
+        builder.Services.AddTransient<BreedsViewModel>();
 
         //Page
         builder.Services.AddTransient<MainPage>();
