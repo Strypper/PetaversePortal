@@ -10,7 +10,29 @@
              xmlns:converters="clr-namespace:PetaversePortal.Converters"
              x:Class="PetaversePortal.Pages.SpeciesPage" 
              x:DataType="vm:SpeciesViewModel"
-             Background="#252836">
+             Background="#252836"
+             Shell.NavBarHasShadow="true"
+             Shell.PresentationMode="Animated">
+    <Shell.TitleView>
+        <Grid VerticalOptions="FillAndExpand"
+              HorizontalOptions="StartAndExpand"
+              ColumnDefinitions="*, auto">
+            <Image VerticalOptions="Center"
+                   HorizontalOptions="Start"
+                   Margin="2"
+                   WidthRequest="45" HeightRequest="45"
+                   Source="https://intranetblobstorages.blob.core.windows.net/avatarstorage/Petaverse.png"/>
+            <Button Grid.Column="1"
+                    Text="Add Species"
+                    VerticalOptions="Center"
+                    HorizontalOptions="End"/>
+        </Grid>
+        <!--<Image Source="https://intranetblobstorages.blob.core.windows.net/avatarstorage/Petaverse.png"
+                VerticalOptions="Center"
+                HorizontalOptions="Start"
+                WidthRequest="45" HeightRequest="45"/>-->
+    </Shell.TitleView>
+
     <ContentPage.Resources>
         <converters:HexToSolidColorBrushConverter x:Key="HexToSolidColorBrushConverter"/>
         <DataTemplate x:Key="HorizontalWrapLayoutItemTemplate"
@@ -140,7 +162,8 @@
                          Color="Black"/>
     </ContentPage.Resources>
     <ScrollView>
-        <Grid RowDefinitions="Auto, Auto, *">
+        <Grid RowDefinitions="Auto, Auto, *"
+                      VerticalOptions="StartAndExpand">
             <Grid>
                 <HorizontalStackLayout Spacing="20"
                                        RadioButtonGroup.GroupName="Species"
@@ -149,7 +172,7 @@
                                        BindableLayout.ItemTemplate="{StaticResource SpeciesPivotItemTemplate}"/>
             </Grid>
             <Grid Grid.Row="1"
-                  Margin="20,20,20,0">
+                          Margin="20,20,20,0">
                 <Frame Padding="10"
                        CornerRadius="5"
                        BackgroundColor="#1f1d2b">

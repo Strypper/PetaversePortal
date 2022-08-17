@@ -42,6 +42,7 @@ namespace PetaversePortal.ViewModels
         [RelayCommand]
         public async Task AddBreed()
         {
+           await _fileService.OpenCameraAsync();
         }
     }
 }
