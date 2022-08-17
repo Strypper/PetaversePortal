@@ -8,9 +8,10 @@
                BindingContext="{x:Reference CreateBreed}"
                Color="Transparent">
     <Frame BackgroundColor="#252836"
-           Padding="10"
+           Padding="5"
            WidthRequest="380">
-        <ScrollView Padding="10,0,10,0">
+        <ScrollView Padding="10"
+                    VerticalScrollBarVisibility="Never">
             <Grid Margin="0"
                   RowSpacing="10"
                   ColumnSpacing="20"
@@ -46,19 +47,29 @@
                            MinimumWidthRequest="100"
                            TextColor="{StaticResource Primary}" 
                            VerticalOptions="Center"/>
-                    <Border Padding="10,0,10,0"
-                            StrokeThickness="2"
-                            BackgroundColor="{StaticResource Gray100}"
-                            Margin="5">
-                        <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="5"/>
-                        </Border.StrokeShape>
-                        <Entry Placeholder="Breed Image Url"
-                               PlaceholderColor="{StaticResource Gray300}"
-                               Text="{Binding BreedDTO.ImageUrl, Mode=TwoWay}"
-                               TextColor="{StaticResource Gray500}"
-                               Keyboard="Url"/>
-                    </Border>
+                    <Grid Margin="5">
+                        <Border StrokeThickness="2"
+                                BackgroundColor="{StaticResource Gray100}"
+                                Margin="0,0,-20,0">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="5"/>
+                            </Border.StrokeShape>
+                            <Entry Placeholder="Breed Image Url"
+                                   PlaceholderColor="{StaticResource Gray300}"
+                                   Text="{Binding BreedDTO.ImageUrl, Mode=TwoWay}"
+                                   TextColor="{StaticResource Gray500}"
+                                   SelectionLength="200"
+                                   Keyboard="Url"/>
+                        </Border>
+                        <HorizontalStackLayout HorizontalOptions="End" 
+                                               Spacing="5"
+                                               Margin="0,0,-10,0">
+                            <Button CornerRadius="5"
+                                HeightRequest="35"/>
+                            <Button CornerRadius="5"
+                                HeightRequest="35"/>
+                        </HorizontalStackLayout>
+                    </Grid>
                     <Label Text="Breed Colors:" 
                            MinimumWidthRequest="100"
                            TextColor="{StaticResource Primary}" 
