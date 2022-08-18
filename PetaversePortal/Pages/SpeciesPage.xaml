@@ -81,11 +81,12 @@
                         <PathGeometry Figures="M0 0H155V58H10C4.47715 58 0 53.5228 0 48V0Z"/>
                     </Button.Clip>
                 </Button>
-                <Image Source="{x:Binding ImageUrl, Mode=OneWay}"
-                       HeightRequest="400"
+                <Image HeightRequest="400"
+                       WidthRequest="300"
                        Margin="0,-10,0,0"
                        VerticalOptions="Start"
-                       HorizontalOptions="Start"/>
+                       HorizontalOptions="Start"
+                       Source="{x:Binding ImageUrl}"/>
             </Grid>
         </DataTemplate>
         <DataTemplate x:Key="SpeciesPivotItemTemplate"
