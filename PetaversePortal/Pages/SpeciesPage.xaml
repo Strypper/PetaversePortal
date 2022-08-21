@@ -14,23 +14,20 @@
              Shell.NavBarHasShadow="true"
              Shell.PresentationMode="Animated">
     <Shell.TitleView>
-        <Grid VerticalOptions="FillAndExpand"
-              HorizontalOptions="StartAndExpand"
-              ColumnDefinitions="*, auto">
-            <Image VerticalOptions="Center"
-                   HorizontalOptions="Start"
-                   Margin="2"
+        <FlexLayout JustifyContent="SpaceBetween"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="StartAndExpand">
+            <Image Margin="0,3,0,0"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"
                    WidthRequest="45" HeightRequest="45"
                    Source="https://intranetblobstorages.blob.core.windows.net/avatarstorage/Petaverse.png"/>
             <Button Grid.Column="1"
+                    Margin="0,0,5,0"
                     Text="Add Species"
                     VerticalOptions="Center"
                     HorizontalOptions="End"/>
-        </Grid>
-        <!--<Image Source="https://intranetblobstorages.blob.core.windows.net/avatarstorage/Petaverse.png"
-                VerticalOptions="Center"
-                HorizontalOptions="Start"
-                WidthRequest="45" HeightRequest="45"/>-->
+        </FlexLayout>
     </Shell.TitleView>
 
     <ContentPage.Resources>
@@ -146,11 +143,11 @@
             </RadioButton>
         </DataTemplate>
         <FontImageSource x:Key="RefreshIcon"
-                         Color="Black"
+                         Color="{AppThemeBinding Light='#15161e', Dark='#eaeaea' }"
                          FontFamily="FluentUIFont"
                          Glyph="{Static icons:FluentIcon.Ic_fluent_accessibility_16_regular}"/>
         <FontImageSource x:Key="InfoIcon"
-                         Color="#15161e"
+                         Color="{AppThemeBinding Light='#15161e', Dark='#eaeaea' }"
                          FontFamily="FluentUIFont"
                          Glyph="{Static icons:FluentIcon.Ic_fluent_info_16_regular}"/>
         <FontImageSource x:Key="DeleteIcon"
@@ -158,9 +155,9 @@
                          FontFamily="FluentUIFont"
                          Glyph="{Static icons:FluentIcon.Ic_fluent_delete_16_regular}"/>
         <FontImageSource x:Key="AddIcon"
-                         Glyph="{Static icons:FluentIcon.Ic_fluent_add_circle_16_regular}"
+                         Color="{AppThemeBinding Light='#15161e', Dark='#eaeaea' }"
                          FontFamily="FluentUIFont"
-                         Color="Black"/>
+                         Glyph="{Static icons:FluentIcon.Ic_fluent_add_circle_16_regular}"/>
     </ContentPage.Resources>
     <ScrollView>
         <Grid RowDefinitions="Auto, Auto, *"
