@@ -10,7 +10,26 @@
              xmlns:converters="clr-namespace:PetaversePortal.Converters"
              x:Class="PetaversePortal.Pages.SpeciesPage" 
              x:DataType="vm:SpeciesViewModel"
-             Background="#252836">
+             Background="#252836"
+             Shell.NavBarHasShadow="true"
+             Shell.PresentationMode="Animated">
+    <Shell.TitleView>
+        <FlexLayout JustifyContent="SpaceBetween"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="StartAndExpand">
+            <Image Margin="0,3,0,0"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"
+                   WidthRequest="45" HeightRequest="45"
+                   Source="https://intranetblobstorages.blob.core.windows.net/avatarstorage/Petaverse.png"/>
+            <Button Grid.Column="1"
+                    Margin="0,0,5,0"
+                    Text="Add Species"
+                    VerticalOptions="Center"
+                    HorizontalOptions="End"/>
+        </FlexLayout>
+    </Shell.TitleView>
+
     <ContentPage.Resources>
         <converters:HexToSolidColorBrushConverter x:Key="HexToSolidColorBrushConverter"/>
         <DataTemplate x:Key="HorizontalWrapLayoutItemTemplate"
@@ -59,11 +78,12 @@
                         <PathGeometry Figures="M0 0H155V58H10C4.47715 58 0 53.5228 0 48V0Z"/>
                     </Button.Clip>
                 </Button>
-                <Image Source="{x:Binding ImageUrl, Mode=OneWay}"
-                       HeightRequest="400"
+                <Image HeightRequest="400"
+                       WidthRequest="300"
                        Margin="0,-10,0,0"
                        VerticalOptions="Start"
-                       HorizontalOptions="Start"/>
+                       HorizontalOptions="Start"
+                       Source="{x:Binding ImageUrl}"/>
             </Grid>
         </DataTemplate>
         <DataTemplate x:Key="SpeciesPivotItemTemplate"
@@ -123,11 +143,11 @@
             </RadioButton>
         </DataTemplate>
         <FontImageSource x:Key="RefreshIcon"
-                         Color="Black"
+                         Color="{AppThemeBinding Light='#15161e', Dark='#eaeaea' }"
                          FontFamily="FluentUIFont"
                          Glyph="{Static icons:FluentIcon.Ic_fluent_accessibility_16_regular}"/>
         <FontImageSource x:Key="InfoIcon"
-                         Color="#15161e"
+                         Color="{AppThemeBinding Light='#15161e', Dark='#eaeaea' }"
                          FontFamily="FluentUIFont"
                          Glyph="{Static icons:FluentIcon.Ic_fluent_info_16_regular}"/>
         <FontImageSource x:Key="DeleteIcon"
@@ -135,19 +155,32 @@
                          FontFamily="FluentUIFont"
                          Glyph="{Static icons:FluentIcon.Ic_fluent_delete_16_regular}"/>
         <FontImageSource x:Key="AddIcon"
-                         Glyph="{Static icons:FluentIcon.Ic_fluent_add_circle_16_regular}"
+                         Color="{AppThemeBinding Light='#15161e', Dark='#eaeaea' }"
                          FontFamily="FluentUIFont"
-                         Color="Black"/>
+                         Glyph="{Static icons:FluentIcon.Ic_fluent_add_circle_16_regular}"/>
     </ContentPage.Resources>
     <ScrollView>
+<<<<<<< HEAD
         <VerticalStackLayout>
             <HorizontalStackLayout Spacing="20"
+=======
+        <Grid RowDefinitions="Auto, Auto, *"
+                      VerticalOptions="StartAndExpand">
+            <Grid>
+                <HorizontalStackLayout Spacing="20"
+>>>>>>> main
                                        RadioButtonGroup.GroupName="Species"
                                        BindableLayout.ItemsSource="{x:Binding SpeciesCollection}"
                                        RadioButtonGroup.SelectedValue="{Binding Species, Mode=TwoWay}"
                                        BindableLayout.ItemTemplate="{StaticResource SpeciesPivotItemTemplate}"/>
+<<<<<<< HEAD
             <Grid
                   Margin="20,20,20,0">
+=======
+            </Grid>
+            <Grid Grid.Row="1"
+                          Margin="20,20,20,0">
+>>>>>>> main
                 <Frame Padding="10"
                        CornerRadius="5"
                        BackgroundColor="#1f1d2b">

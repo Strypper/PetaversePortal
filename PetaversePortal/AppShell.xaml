@@ -1,15 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Shell Shell.FlyoutBehavior="Flyout"
-        x:Class="PetaversePortal.AppShell"
-        xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-        xmlns:local="clr-namespace:PetaversePortal.Pages"
-        xmlns:icons="clr-namespace:PetaversePortal.Models.Icons">
+       x:Class="PetaversePortal.AppShell"
+       xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:local="clr-namespace:PetaversePortal.Pages"
+       xmlns:icons="clr-namespace:PetaversePortal.Models.Icons"
+       xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
     <Shell.Resources>
         <FontImageSource x:Key="BreedIcon"
                          Color="{AppThemeBinding Light='#15161e', Dark='#eaeaea' }"
                          FontFamily="FluentUIFont"
                          Glyph="{Static icons:FluentIcon.Ic_fluent_animal_dog_16_regular}"/>
+
+        <FontImageSource x:Key="PetShortsIcon"
+                         Color="{AppThemeBinding Light='#15161e', Dark='#eaeaea' }"
+                         FontFamily="FluentUIFont"
+                         Glyph="{Static icons:FluentIcon.Ic_fluent_video_clip_16_regular}"/>
+
+        <FontImageSource x:Key="AdoptionIcon"
+                         Color="{AppThemeBinding Light='#15161e', Dark='#eaeaea' }"
+                         FontFamily="FluentUIFont"
+                         Glyph="{Static icons:FluentIcon.Ic_fluent_heart_circle_16_regular}"/>
     </Shell.Resources>
 
     <Shell.FlyoutHeader>
@@ -22,8 +33,32 @@
         </Grid>
     </Shell.FlyoutHeader>
     
+    <ShellContent Title="PetShorts"
+                  Route="SpeciesPage"
+                  Icon="{StaticResource PetShortsIcon}"
+                  ContentTemplate="{DataTemplate local:SpeciesPage}" />
+    
     <ShellContent Title="Species"
                   Route="SpeciesPage"
                   Icon="{StaticResource BreedIcon}"
                   ContentTemplate="{DataTemplate local:SpeciesPage}" />
+
+
+    <ShellContent Title="Adoption"
+                  Route="AdoptionIcon"
+                  Icon="{StaticResource AdoptionIcon}"
+                  ContentTemplate="{DataTemplate local:SpeciesPage}" />
+
+    <MenuItem Text="Strypper Vandel Jason"
+              IconImageSource="https://i.imgur.com/vc9FudE.jpg"/>
+
+    <Shell.FlyoutFooter>
+        <VerticalStackLayout HorizontalOptions="Center">
+            <Image HeightRequest="50"
+                   WidthRequest="50"
+                   Source="https://i.imgur.com/Ub65udB.png"/>
+            <Label Text="Totechs Corp" HorizontalOptions="Center"/>
+            <Label Text="Design and code with care"/>
+        </VerticalStackLayout>
+    </Shell.FlyoutFooter>
 </Shell>
