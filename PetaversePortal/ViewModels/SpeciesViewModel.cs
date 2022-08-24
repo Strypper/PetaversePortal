@@ -39,10 +39,13 @@ namespace PetaversePortal.ViewModels
             //species.ToList().ForEach(breed => SpeciesCollection.Add(breed));
         }
 
+<<<<<<< HEAD
+=======
         [RelayCommand]
         public async Task AddBreed()
         {
            await _fileService.OpenCameraAsync();
         }
+>>>>>>> main
     }
 }

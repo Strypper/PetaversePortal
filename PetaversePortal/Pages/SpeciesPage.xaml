@@ -160,17 +160,27 @@
                          Glyph="{Static icons:FluentIcon.Ic_fluent_add_circle_16_regular}"/>
     </ContentPage.Resources>
     <ScrollView>
+<<<<<<< HEAD
+        <VerticalStackLayout>
+            <HorizontalStackLayout Spacing="20"
+=======
         <Grid RowDefinitions="Auto, Auto, *"
                       VerticalOptions="StartAndExpand">
             <Grid>
                 <HorizontalStackLayout Spacing="20"
+>>>>>>> main
                                        RadioButtonGroup.GroupName="Species"
                                        BindableLayout.ItemsSource="{x:Binding SpeciesCollection}"
                                        RadioButtonGroup.SelectedValue="{Binding Species, Mode=TwoWay}"
                                        BindableLayout.ItemTemplate="{StaticResource SpeciesPivotItemTemplate}"/>
+<<<<<<< HEAD
+            <Grid
+                  Margin="20,20,20,0">
+=======
             </Grid>
             <Grid Grid.Row="1"
                           Margin="20,20,20,0">
+>>>>>>> main
                 <Frame Padding="10"
                        CornerRadius="5"
                        BackgroundColor="#1f1d2b">
@@ -196,6 +206,6 @@
             <customLayout:HorizontalWrapLayout Grid.Row="2" Spacing="20" Margin="10,20,0,0"
                                                BindableLayout.ItemsSource="{x:Binding Species.Breeds, Mode=OneWay}"
                                                BindableLayout.ItemTemplate="{StaticResource HorizontalWrapLayoutItemTemplate}"/>
-        </Grid>
+        </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

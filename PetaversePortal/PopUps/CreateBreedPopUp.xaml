@@ -6,101 +6,260 @@
                xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
                xmlns:local="clr-namespace:PetaversePortal.PopUps"
                BindingContext="{x:Reference CreateBreed}"
-               Color="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray100}}">
-    <Frame>
-        <ScrollView Padding="10,0,10,0" 
+               Color="Transparent">
+    <Frame BackgroundColor="#252836"
+           Padding="5"
+           WidthRequest="380">
+        <ScrollView Padding="10"
                     VerticalScrollBarVisibility="Never">
             <Grid Margin="0"
-                  RowSpacing="30"
-                  ColumnSpacing="40"
+                  RowSpacing="10"
+                  ColumnSpacing="20"
                   RowDefinitions="*, auto"
                   ColumnDefinitions="*, *" >
-                <VerticalStackLayout Grid.Column="0" Grid.ColumnSpan="2" Margin="0">
+                <VerticalStackLayout Grid.Column="0" 
+                                     Grid.ColumnSpan="2" 
+                                     Margin="0">
                     <Label Text="Create a new Breed" 
                            TextColor="{StaticResource Primary}"
                            FontSize="Large"
                            Margin="5"
                            HorizontalOptions="Center"/>
                     <Label Text="Breed Name:"
-                           MinimumWidthRequest="120"
+                           MinimumWidthRequest="100"
                            TextColor="{StaticResource Primary}" 
                            VerticalOptions="Center"/>
-                    <Entry Placeholder="Breed Name"
-                           Margin="0"
-                           BackgroundColor="{StaticResource Gray100}"
-                           PlaceholderColor="{StaticResource Gray300}"
-                           Text="{Binding BreedDTO.BreedName, Mode=TwoWay}"
-                           TextColor="{StaticResource Gray500}"
-                           ClearButtonVisibility="WhileEditing"/>
-
-                        <Label Text="Breed Image Url:" 
-                               MinimumWidthRequest="120"
-                               TextColor="{StaticResource Gray500}" 
-                               VerticalOptions="Center"/>
                     <Border Padding="10,0,10,0"
-                                StrokeThickness="2">
+                            StrokeThickness="2"
+                            BackgroundColor="{StaticResource Gray100}"
+                            Margin="5">
                         <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="10"/>
+                            <RoundRectangle CornerRadius="5"/>
                         </Border.StrokeShape>
-                        <Entry Placeholder="Breed Image Url"
-                               BackgroundColor="{StaticResource Gray100}"
+                        <Entry Placeholder="Breed Name"
+                               Margin="0"
                                PlaceholderColor="{StaticResource Gray300}"
-                               Text="{Binding BreedDTO.ImageUrl, Mode=TwoWay}"
+                               Text="{Binding BreedDTO.BreedName, Mode=TwoWay}"
                                TextColor="{StaticResource Gray500}"
-                               Keyboard="Url"/>
+                               ClearButtonVisibility="WhileEditing"/>
                     </Border>
-
+                    <Label Text="Breed Image Url:" 
+                           MinimumWidthRequest="100"
+                           TextColor="{StaticResource Primary}" 
+                           VerticalOptions="Center"/>
+                    <Grid Margin="5">
+                        <Border StrokeThickness="2"
+                                BackgroundColor="{StaticResource Gray100}"
+                                Margin="0,0,-20,0">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="5"/>
+                            </Border.StrokeShape>
+                            <Entry Placeholder="Breed Image Url"
+                                   PlaceholderColor="{StaticResource Gray300}"
+                                   Text="{Binding BreedDTO.ImageUrl, Mode=TwoWay}"
+                                   TextColor="{StaticResource Gray500}"
+                                   SelectionLength="200"
+                                   Keyboard="Url"/>
+                        </Border>
+                        <HorizontalStackLayout HorizontalOptions="End" 
+                                               Spacing="5"
+                                               Margin="0,0,-10,0">
+                            <Button CornerRadius="5"
+                                HeightRequest="35"/>
+                            <Button CornerRadius="5"
+                                HeightRequest="35"/>
+                        </HorizontalStackLayout>
+                    </Grid>
                     <Label Text="Breed Colors:" 
-                               MinimumWidthRequest="120"
-                               TextColor="{StaticResource Gray500}" 
+                           MinimumWidthRequest="100"
+                           TextColor="{StaticResource Primary}" 
+                           VerticalOptions="Center"/>
+                    <Border Padding="10,0,10,0"
+                            StrokeThickness="2"
+                            BackgroundColor="{StaticResource Gray100}"
+                            Margin="5">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="5"/>
+                        </Border.StrokeShape>
+                        <Entry Placeholder="Breed Colors"
+                               PlaceholderColor="{StaticResource Gray300}"
+                               TextColor="{StaticResource Gray500}"
+                               Text="{Binding BreedDTO.Color, Mode=TwoWay}"/>
+                    </Border>
+                    <HorizontalStackLayout Grid.RowSpan="2" 
+                                           HorizontalOptions="Center"
+                                           Margin="5">
+                        <Label Text="Breed Size" 
+                               TextColor="{StaticResource Primary}"
+                               WidthRequest="120"
                                VerticalOptions="Center"/>
-                        <Border Padding="10,0,10,0"
-                                StrokeThickness="2">
+                        <Border Padding="5,0,5,0"
+                                StrokeThickness="2"
+                                BackgroundColor="{StaticResource Gray100}">
                             <Border.StrokeShape>
                                 <RoundRectangle CornerRadius="10"/>
                             </Border.StrokeShape>
-                            <Entry Placeholder="Breed Colors"
-                                   BackgroundColor="{StaticResource Gray100}"
+                            <Entry Placeholder="Min"
                                    PlaceholderColor="{StaticResource Gray300}"
+                                   Text="{Binding BreedDTO.MinimunSize, Mode=TwoWay}"
                                    TextColor="{StaticResource Gray500}"
-                                   Text="{Binding BreedDTO.Color, Mode=TwoWay}"/>
+                                   Keyboard="Numeric"
+                                   HorizontalTextAlignment="Center">
+                                <Entry.Behaviors>
+                                    <toolkit:NumericValidationBehavior 
+                                    InvalidStyle="{StaticResource InvalidEntryStyle}"
+                                    ValidStyle="{StaticResource ValidEntryStyle}"
+                                    MinimumValue="1.0"
+                                    MaximumValue="100.0"
+                                    MaximumDecimalPlaces="2"/>
+                                </Entry.Behaviors>
+                            </Entry>
                         </Border>
-
-                    <HorizontalStackLayout>
-                        <Entry Placeholder="Breed Minimum Size"
-                           Text="{Binding BreedDTO.MinimunSize, Mode=TwoWay}"/>
-                        <Entry Placeholder="Breed Maximum Size"
-                           Text="{Binding BreedDTO.MaximumSize, Mode=TwoWay}"/>
+                        <Border Padding="5,0,5,0"
+                                StrokeThickness="2"
+                                BackgroundColor="{StaticResource Gray100}">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="10"/>
+                            </Border.StrokeShape>
+                            <Entry Placeholder="Max"
+                                   PlaceholderColor="{StaticResource Gray300}"
+                                   Text="{Binding BreedDTO.MaximumSize, Mode=TwoWay}"
+                                   TextColor="{StaticResource Gray500}"
+                                   Keyboard="Numeric"
+                                   HorizontalTextAlignment="Center">
+                                <Entry.Behaviors>
+                                    <toolkit:NumericValidationBehavior 
+                                    InvalidStyle="{StaticResource InvalidEntryStyle}"
+                                    ValidStyle="{StaticResource ValidEntryStyle}"
+                                    MinimumValue="1.0"
+                                    MaximumValue="100.0"
+                                    MaximumDecimalPlaces="2" />
+                                </Entry.Behaviors>
+                            </Entry>
+                        </Border>
                     </HorizontalStackLayout>
-                    <HorizontalStackLayout>
-                        <Entry Placeholder="Breed Minimum Size"
-                           Text="{Binding BreedDTO.MinimumWeight, Mode=TwoWay}"/>
-                        <Entry Placeholder="Breed Maximum Size"
-                           Text="{Binding BreedDTO.MaximumWeight, Mode=TwoWay}"/>
+                    <HorizontalStackLayout Grid.RowSpan="2" 
+                                           HorizontalOptions="Center"
+                                           Margin="5">
+                        <Label Text="Breed Weight" 
+                               TextColor="{StaticResource Primary}"
+                               WidthRequest="120"/>
+                        <Border Padding="5,0,5,0"
+                                StrokeThickness="2"
+                                BackgroundColor="{StaticResource Gray100}">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="10"/>
+                            </Border.StrokeShape>
+                            <Entry Placeholder="Min"
+                                   PlaceholderColor="{StaticResource Gray300}"
+                                   Text="{Binding BreedDTO.MinimumWeight, Mode=TwoWay}"
+                                   TextColor="{StaticResource Gray500}"
+                                   Keyboard="Numeric"
+                                   HorizontalTextAlignment="Center">
+                                <Entry.Behaviors>
+                                    <toolkit:NumericValidationBehavior 
+                                    InvalidStyle="{StaticResource InvalidEntryStyle}"
+                                    ValidStyle="{StaticResource ValidEntryStyle}"
+                                    MinimumValue="1.0"
+                                    MaximumValue="100.0"
+                                    MaximumDecimalPlaces="2" />
+                                </Entry.Behaviors>
+                            </Entry>
+                        </Border>
+                        <Border Padding="5,0,5,0"
+                                StrokeThickness="2"
+                                BackgroundColor="{StaticResource Gray100}">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="10"/>
+                            </Border.StrokeShape>
+                            <Entry Placeholder="Max"
+                                   PlaceholderColor="{StaticResource Gray300}"
+                                   Text="{Binding BreedDTO.MaximumWeight, Mode=TwoWay}"
+                                   TextColor="{StaticResource Gray500}"
+                                   Keyboard="Numeric"
+                                   HorizontalTextAlignment="Center">
+                                <Entry.Behaviors>
+                                    <toolkit:NumericValidationBehavior 
+                                    InvalidStyle="{StaticResource InvalidEntryStyle}"
+                                    ValidStyle="{StaticResource ValidEntryStyle}"
+                                    MinimumValue="1.0"
+                                    MaximumValue="100.0"
+                                    MaximumDecimalPlaces="2" />
+                                </Entry.Behaviors>
+                            </Entry>
+                        </Border>
                     </HorizontalStackLayout>
-                    <HorizontalStackLayout>
-                        <Entry Placeholder="Breed Minimum Size"
-                           Text="{Binding BreedDTO.MinimumLifeSpan, Mode=TwoWay}"/>
-                        <Entry Placeholder="Breed Maximum Size"
-                           Text="{Binding BreedDTO.MaximumLifeSpan, Mode=TwoWay}"/>
+                    <HorizontalStackLayout Grid.RowSpan="2" 
+                                           HorizontalOptions="Center"
+                                           Margin="5">
+                        <Label Text="Breed Life Span" 
+                               TextColor="{StaticResource Primary}"
+                               WidthRequest="120"/>
+                        <Border Padding="5,0,5,0"
+                                StrokeThickness="2"
+                                BackgroundColor="{StaticResource Gray100}">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="10"/>
+                            </Border.StrokeShape>
+                            <Entry Placeholder="Min"
+                                   PlaceholderColor="{StaticResource Gray300}"
+                                   Text="{Binding BreedDTO.MinimumLifeSpan, Mode=TwoWay}"
+                                   TextColor="{StaticResource Gray500}"
+                                   Keyboard="Numeric"
+                                   HorizontalTextAlignment="Center">
+                                <Entry.Behaviors>
+                                    <toolkit:NumericValidationBehavior 
+                                    InvalidStyle="{StaticResource InvalidEntryStyle}"
+                                    ValidStyle="{StaticResource ValidEntryStyle}"
+                                    MinimumValue="1.0"
+                                    MaximumValue="100.0"
+                                    MaximumDecimalPlaces="2" />
+                                </Entry.Behaviors>
+                            </Entry>
+                        </Border>
+                        <Border Padding="5,0,5,0"
+                                StrokeThickness="2"
+                                BackgroundColor="{StaticResource Gray100}">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="10"/>
+                            </Border.StrokeShape>
+                            <Entry Placeholder="Max"
+                                   PlaceholderColor="{StaticResource Gray300}"
+                                   Text="{Binding BreedDTO.MaximumLifeSpan, Mode=TwoWay}"
+                                   TextColor="{StaticResource Gray500}"
+                                   Keyboard="Numeric"
+                                   HorizontalTextAlignment="Center">
+                                <Entry.Behaviors>
+                                    <toolkit:NumericValidationBehavior 
+                                    InvalidStyle="{StaticResource InvalidEntryStyle}"
+                                    ValidStyle="{StaticResource ValidEntryStyle}"
+                                    MinimumValue="1.0"
+                                    MaximumValue="100.0"
+                                    MaximumDecimalPlaces="2" />
+                                </Entry.Behaviors>
+                            </Entry>
+                        </Border>
                     </HorizontalStackLayout>
-                    <Label Text="Breed Description" TextColor="{StaticResource Gray500}"/>
+                    <Label Text="Breed Description" 
+                           TextColor="{StaticResource Primary}"/>
                     <Border Padding="10,5"
-                            StrokeThickness="2">
+                            StrokeThickness="2"
+                            BackgroundColor="{StaticResource Gray100}">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="10"/>
                         </Border.StrokeShape>
                         <Editor Placeholder="Breed Description"
-                                MinimumHeightRequest="200"
-                                Text="{Binding BreedDTO.BreedDescription, Mode=TwoWay}"/>
+                                MinimumHeightRequest="150"
+                                Text="{Binding BreedDTO.BreedDescription, Mode=TwoWay}"
+                                TextColor="{StaticResource Gray500}"/>
                     </Border>
                 </VerticalStackLayout>
                 <Button Text="Add Breed" 
-                    Grid.Row="1" Grid.Column="0"
-                    Clicked="OnYesButtonClicked" />
+                        Grid.Row="1" Grid.Column="0"
+                        Clicked="OnYesButtonClicked"/>
                 <Button Text="Cancel"
-                    Grid.Row="1" Grid.Column="1"
-                    Clicked="OnNoButtonClicked" />
+                        Grid.Row="1" Grid.Column="1"
+                        Clicked="OnNoButtonClicked" />
             </Grid>
         </ScrollView>
     </Frame>
