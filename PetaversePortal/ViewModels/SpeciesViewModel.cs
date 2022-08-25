@@ -36,7 +36,6 @@ namespace PetaversePortal.ViewModels
             species.ToList().ForEach(sp => SpeciesCollection.Add(sp));
             Species = SpeciesCollection.FirstOrDefault();
             IsRunning = false;
-            //species.ToList().ForEach(breed => SpeciesCollection.Add(breed));
         }
 
         [RelayCommand]

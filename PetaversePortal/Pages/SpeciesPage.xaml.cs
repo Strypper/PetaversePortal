@@ -19,13 +19,15 @@ public partial class SpeciesPage : ContentPage
 
     private async void AddBreedBtn_Clicked(object sender, EventArgs e)
     {
-        //var result = await this.ShowPopupAsync(new CreateBreedPopUp(_svm.Species.Id));
-        //if (result != null)
-        //{
-        //}
-        //else
-        //{
-        //}
-        await DisplayAlert("Alert", "You have been alerted", "OK");
+        if(_svm.Species.Id != 0)
+        {
+            var result = await this.ShowPopupAsync(new CreateBreedPopUp(_svm.Species.Id));
+            if (result != null)
+            {
+            }
+            else
+            {
+            }
+        }
     }
 }
