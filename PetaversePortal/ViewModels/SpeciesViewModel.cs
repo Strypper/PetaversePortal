@@ -39,9 +39,13 @@ namespace PetaversePortal.ViewModels
         }
 
         [RelayCommand]
-        public async Task AddBreed()
+        public async Task AddBreed(BreedDTO breedDTO)
         {
-           await _fileService.OpenCameraAsync();
+            if(breedDTO is not null)
+            {
+                var breed = await _breedService.CreateAsync(breedDTO);
+                Species.Breeds.Add(breed);
+            }
         }
     }
 }

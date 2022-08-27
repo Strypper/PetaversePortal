@@ -44,7 +44,8 @@ namespace PetaversePortal.Services
         {
             try
             {
-                return await _speciesData.CreateAsync(dto);
+                var speciesId = await _speciesData.CreateAsync(dto);
+                return await _speciesData.GetByIdAsync(speciesId);
             }
             catch (ApiException ex)
             {

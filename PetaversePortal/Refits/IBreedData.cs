@@ -15,6 +15,6 @@ namespace PetaversePortal.Refits
         Task<ICollection<BreedDTO>> GetAllBreedsWithMembersAsync();
 
         [Post("/Breed/Create")]
-        Task<BreedDTO?> CreateAsync(BreedDTO dto);
+        Task<int> CreateAsync(BreedDTO dto);
     }
 }

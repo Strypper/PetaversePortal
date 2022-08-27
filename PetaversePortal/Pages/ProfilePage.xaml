@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PetaversePortal.Pages.ProfilePage"
+             xmlns:icons="clr-namespace:PetaversePortal.Models.Icons"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
+    <Shell.TitleView>
+        <FlexLayout VerticalOptions="Center"
+                    JustifyContent="SpaceBetween"
+                    HorizontalOptions="FillAndExpand">
+            <Label Text="Totechs CEO"
+                   FontSize="Body"
+                   VerticalOptions="Center"/>
+            <HorizontalStackLayout VerticalOptions="Center">
+                <Label Text="Follow" VerticalOptions="Center"/>
+                <Switch OnColor="{StaticResource Primary}" 
+                        VerticalOptions="Center"
+                        MinimumWidthRequest="0"/>
+            </HorizontalStackLayout>
+        </FlexLayout>
+    </Shell.TitleView>
+    <ContentPage.Resources>
+        <FontImageSource x:Key="EditBioIcon"
+                         FontFamily="FluentUIFont"
+                         Color="{AppThemeBinding Light='#15161e', Dark='#eaeaea' }"
+                         Glyph="{Static icons:FluentIcon.Ic_fluent_code_text_edit_20_regular}"/>
+
+        <FontImageSource x:Key="EditIcon"
+                         FontFamily="FluentUIFont"
+                         Color="{AppThemeBinding Light='#15161e', Dark='#eaeaea' }"
+                         Glyph="{Static icons:FluentIcon.Ic_fluent_edit_20_regular}"/>
+
+        <FontImageSource x:Key="CallIcon"
+                         FontFamily="FluentUIFont"
+                         Color="{AppThemeBinding Light='#15161e', Dark='#eaeaea' }"
+                         Glyph="{Static icons:FluentIcon.Ic_fluent_call_20_regular}"/>
+
+        <FontImageSource x:Key="ChatIcon"
+                         FontFamily="FluentUIFont"
+                         Color="{AppThemeBinding Light='#15161e', Dark='#eaeaea' }"
+                         Glyph="{Static icons:FluentIcon.Ic_fluent_chat_20_regular}"/>
+
+        <FontImageSource x:Key="MailIcon"
+                         FontFamily="FluentUIFont"
+                         Color="{AppThemeBinding Light='#15161e', Dark='#eaeaea' }"
+                         Glyph="{Static icons:FluentIcon.Ic_fluent_mail_20_regular}"/>
+
+        <FontImageSource x:Key="DonateIcon"
+                         FontFamily="FluentUIFont"
+                         Color="{AppThemeBinding Light='#15161e', Dark='#eaeaea' }"
+                         Glyph="{Static icons:FluentIcon.Ic_fluent_money_hand_20_regular}"/>
+    </ContentPage.Resources>
+    <ScrollView>
+        <VerticalStackLayout>
+            <Frame Margin="5">
+                <Grid>
+                    <VerticalStackLayout>
+                        <toolkit:AvatarView CornerRadius="50"
+                                            WidthRequest="100"
+                                            HeightRequest="100"
+                                            ImageSource="https://i.imgur.com/vc9FudE.jpg"/>
+                        <HorizontalStackLayout Spacing="10"
+                                           HorizontalOptions="Center">
+                            <Label Text="26 years old"/>
+                            <Label Text="Male"/>
+                        </HorizontalStackLayout>
+                        <Label FontAttributes="Bold"
+                           Text="Strypper Vandel Jason"
+                           HorizontalOptions="Center"
+                           HorizontalTextAlignment="Center"/>
+                        <Frame CornerRadius="5"
+                           Margin="0,10,0,0"                           
+                           BackgroundColor="{StaticResource Black}">
+                            <Label HeightRequest="250"/>
+                        </Frame>
+                        <Button Margin="0,10,0,0"
+                            Text="Donate this user"
+                            BackgroundColor="{StaticResource Primary}"
+                            ImageSource="{StaticResource DonateIcon}"/>
+                        <HorizontalStackLayout Spacing="10"
+                                               Margin="0,10,0,0"
+                                               HorizontalOptions="Center">
+
+                            <Button BackgroundColor="LimeGreen"
+                                ImageSource="{StaticResource CallIcon}"/>
+
+                            <Button BackgroundColor="Gold"
+                                ImageSource="{StaticResource ChatIcon}"/>
+
+                            <Button BackgroundColor="DarkRed"
+                                ImageSource="{StaticResource MailIcon}"/>
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+                    <ImageButton Source="{StaticResource EditIcon}"
+                                 WidthRequest="30"
+                                 HeightRequest="30"
+                                 VerticalOptions="Start"
+                                 HorizontalOptions="End"/>
+                </Grid>
+            </Frame>
+            <Frame Margin="5,0,5,5">
+                <VerticalStackLayout>
+                    <Label Text="Top achievements"
+                           FontAttributes="Bold"/>
+                    <CollectionView/>
+                </VerticalStackLayout>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -7,7 +7,7 @@
        xmlns:icons="clr-namespace:PetaversePortal.Models.Icons"
        xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
     <Shell.Resources>
-        <FontImageSource x:Key="BreedIcon"
+        <FontImageSource x:Key="PetIcon"
                          Color="{AppThemeBinding Light='#15161e', Dark='#eaeaea' }"
                          FontFamily="FluentUIFont"
                          Glyph="{Static icons:FluentIcon.Ic_fluent_animal_dog_16_regular}"/>
@@ -21,6 +21,16 @@
                          Color="{AppThemeBinding Light='#15161e', Dark='#eaeaea' }"
                          FontFamily="FluentUIFont"
                          Glyph="{Static icons:FluentIcon.Ic_fluent_heart_circle_16_regular}"/>
+        
+        <FontImageSource x:Key="WikiIcon"
+                         Color="{AppThemeBinding Light='#15161e', Dark='#eaeaea' }"
+                         FontFamily="FluentUIFont"
+                         Glyph="{Static icons:FluentIcon.Ic_fluent_info_16_regular}"/>
+
+        <FontImageSource x:Key="AchievementIcon"
+                         Color="{AppThemeBinding Light='#15161e', Dark='#eaeaea' }"
+                         FontFamily="FluentUIFont"
+                         Glyph="{Static icons:FluentIcon.Ic_fluent_reward_16_regular}"/>
     </Shell.Resources>
 
     <Shell.FlyoutHeader>
@@ -34,23 +44,35 @@
     </Shell.FlyoutHeader>
     
     <ShellContent Title="PetShorts"
-                  Route="SpeciesPage"
+                  Route="PetShort"
                   Icon="{StaticResource PetShortsIcon}"
-                  ContentTemplate="{DataTemplate local:SpeciesPage}" />
+                  ContentTemplate="{DataTemplate local:PetShortPage}" />
     
     <ShellContent Title="Species"
                   Route="SpeciesPage"
-                  Icon="{StaticResource BreedIcon}"
+                  Icon="{StaticResource WikiIcon}"
                   ContentTemplate="{DataTemplate local:SpeciesPage}" />
 
 
-    <ShellContent Title="Adoption"
-                  Route="AdoptionIcon"
+    <ShellContent Title="Adoptions"
+                  Route="AdoptionPage"
                   Icon="{StaticResource AdoptionIcon}"
-                  ContentTemplate="{DataTemplate local:SpeciesPage}" />
+                  ContentTemplate="{DataTemplate local:AdoptionPage}" />
 
-    <MenuItem Text="Strypper Vandel Jason"
-              IconImageSource="https://i.imgur.com/vc9FudE.jpg"/>
+    <ShellContent Title="Pets"
+                  Route="PetPage"
+                  Icon="{StaticResource PetIcon}"
+                  ContentTemplate="{DataTemplate local:PetPage}" />
+
+    <ShellContent Title="Achievements"
+                  Route="AchievementPage"
+                  Icon="{StaticResource AchievementIcon}"
+                  ContentTemplate="{DataTemplate local:AchievementPage}" />
+
+    <ShellContent Title="Strypper Vandel Jason"
+                  Route="ProfilePage"
+                  Icon="https://i.imgur.com/vc9FudE.jpg"
+                  ContentTemplate="{DataTemplate local:ProfilePage}"/>
 
     <Shell.FlyoutFooter>
         <VerticalStackLayout HorizontalOptions="Center">
